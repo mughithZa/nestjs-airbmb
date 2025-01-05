@@ -6,6 +6,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UsersModule } from './users/users.module';
 import { LoggerModule } from '@app/common';
+import { LocalStategy } from './strategies/local.strategy';
 
 @Module({
   imports: [
@@ -30,6 +31,6 @@ import { LoggerModule } from '@app/common';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, LocalStategy],
 })
 export class AuthModule {}
