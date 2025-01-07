@@ -14,12 +14,16 @@ export class PaymentsService {
 
   async createCharge({ card, amount }: PaymentsCreateChargeDto) {
     console.log(card);
+
     const paymentIntent = await this.stripe.paymentIntents.create({
+      customer: 'cus_RXoRsGRRtqX2I1',
       payment_method: 'pm_1QeipY2fJLZvumTUWw6wC2Ul',
       amount: amount * 100,
       currency: 'usd',
+      confirm: true,
+      return_url: 'https://yourdomain.com/payment-complete',
+      automatic_payment_methods: { enabled: true },
     });
-
     return paymentIntent;
   }
 }
