@@ -30,7 +30,10 @@ export class PaymentsService {
       return_url: 'https://yourdomain.com/payment-complete',
       automatic_payment_methods: { enabled: true },
     });
-    this.notificationService.emit('notify_email', { email });
+    this.notificationService.emit('notify_email', {
+      email,
+      text: 'Your payment has done successfully!',
+    });
     return paymentIntent;
   }
 }
